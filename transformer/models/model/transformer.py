@@ -19,7 +19,7 @@ class Transformer(nn.Module):
 
     def forward(self, src, trg):
         src_mask = self.make_pad_mask(src, src)  
-        src_trg_mask = self.make_pad_mask(trg, src)  # What will happen to this at test time? we don't have target. 
+        src_trg_mask = self.make_pad_mask(trg, src)  # TODO: What will happen to this at test time? we don't have target. 
         trg_mask = self.make_pad_mask(trg, trg) * self.make_no_peak_mask(trg, trg)  
         enc_src = self.encoder(src, src_mask) 
         output = self.decoder(trg, enc_src, trg_mask, src_trg_mask)
