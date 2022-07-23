@@ -33,6 +33,6 @@ class DataLoader:
     
     def make_iter(self, train, validate, test, batch_size, device):
         train_iterator, valid_iterator, test_iterator = BucketIterator.splits((train, validate, test), 
-                                                                              batch_sizes=batch_size) 
+                                                                              batch_size=batch_size, device=device) 
         print("Initialising the dataset is done!")
         return train_iterator, valid_iterator, test_iterator 

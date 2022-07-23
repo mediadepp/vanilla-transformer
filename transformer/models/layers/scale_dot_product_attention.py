@@ -9,7 +9,7 @@ class ScaleDotProductAttention(nn.Module):
     
     def forward(self, q, k, v, mask=None, e=1e-12):
         batch_size, head, length, d_tensor = k.shape
-        k_t = k.transpose(-2, -3)
+        k_t = k.transpose(-1, -2)
         score = (q @ k_t) / math.sqrt(d_tensor)
         if mask is not None: 
             score = score.masked_fill(mask == 0, -e)

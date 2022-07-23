@@ -21,3 +21,4 @@ class Encoder(nn.Module):
         x = self.emb(x)
         for layer in self.layers:
             x = layer(x, s_mask)
+        return x
